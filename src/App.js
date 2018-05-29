@@ -9,9 +9,21 @@ class App extends Component {
 
     let msgData = chatMessages;
 
-    const messages = msgData.map((msg) => {
-      return <Message sender={ msg.sender } body={ msg.body } timeStamp={ msg.timeStamp} />
+    const messages = msgData.map((msg, key) => {
+      let type = "remote"
+      if (msg.sender === 'Vladimir') {
+        type = "local"
+      }
+
+      return <Message key={key} sender={ msg.sender } body={ msg.body } timeStamp={ msg.timeStamp} type={ type } />
     });
+
+
+    // let className = "chat-entry"
+    //   if (this.props.type) === "local" {
+    //     className += "local";
+    //   }
+    // };
 
     return (
       <div className="App">
